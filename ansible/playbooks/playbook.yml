@@ -3,6 +3,6 @@
 - name: playbook 
   hosts: target 
 
-  roles:
-    - role: utilizable.proxmox.vm.preseeding
+#  roles:
+#    - role: utilizable-proxmox-vm-preseeding
 ...
