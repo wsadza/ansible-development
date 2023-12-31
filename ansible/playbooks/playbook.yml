@@ -1,0 +1,8 @@
+#!/usr/bin/env ansible-playbook
+---
+- name: playbook 
+  hosts: target 
+
+  roles:
+    - role: utilizable.proxmox.vm.preseeding
+...

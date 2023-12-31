@@ -1,25 +1,25 @@
-TEMPLATE-GITHUB-ACTIONS-SEMVER-TAGGING 
+DEVEL-ANSIBLE
 ######################################
 
 DESCRIPTION:
 --------------------------------------
-Here is a simple example of using GitHub Actions to implement semantic versioning (semver). 
-There are three files, each describing a slightly different workflow:
-
-  - patch.yml: Triggered only from fixed branches (e.g., fix/1.0.x).
-  - minor.yml: Triggered always.
-  - major.yml: Triggered manually.
 
 REPOSITORY STRUCTURE:
 --------------------------------------
 .
-├── .github
-│   └── workflows
-│       ├── patch.yml
-|       ├── minor.yml
-│       └── major.yml
+├── ansible
+│   ├── ansible.cfg
+│   ├── inventories
+│   │   └── hosts
+│   ├── playbooks
+│   │   └── playbook.yml
+│   ├── requirements.yml
+│   └── roles
+├── build
+│   └── Dockerfile
+├── compose.yml
+├── makefile
 └── README
 
 REFERENCES:
 --------------------------------------
-  - alpine/semver: https://github.com/alpine-docker/semver

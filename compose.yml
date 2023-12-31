@@ -1,0 +1,46 @@
+---
+version: "3.2"
+services:
+
+  common: &common
+    image: ansible
+    build:
+      context: ./
+      dockerfile: './build/Dockerfile'
+    volumes:
+      - shared:/app
+    env_file:
+      - .env
+
+  install:
+    <<: *common
+    container_name: "ansible-install"
+    command:
+      - |
+        # install ansible roles 
+        # -
+        ansible-galaxy \
+        install \
+        -r \
+        requirements.yml
+
+  play:
+    <<: *common
+    container_name: "ansible-playbook"
+    command:
+      - |
+        # append private key to ssh client 
+        # -
+        eval $(ssh-agent); 
+        ssh-add - <<< "${TARGET_ID_RSA}";
+
+        # evaluate ansible playbook
+        # -
+        ansible-playbook \
+        ./playbooks/playbook.yml \
+        --inventory \
+        ./inventories/hosts;
+
+volumes:
+  shared:
+...
