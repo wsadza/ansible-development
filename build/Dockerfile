@@ -4,11 +4,9 @@ RUN apk --no-cache add \
     ansible \
     openssh-client \
     sshpass \
-    bash \
-    git
+    py3-jmespath \ 
+    bash
 
 COPY ./ansible /app 
-
-WORKDIR /app
 
 ENTRYPOINT [ "bash", "-c" ]
